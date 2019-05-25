@@ -28,7 +28,7 @@ app.get('/credit', (req,res) =>{
 });
 
 app.get('/profile', (req,res) =>{
-  app.render('profile', {user:users[0]});
+  res.render('profile', {user:users[0]});
 });
 
 app.get('/', (req,res) =>{
