@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const accountRoutes = require('./routes/account');
+const accountRoutes = require('./routes/accounts');
 const servicesRoutes = require('./routes/services');
 
 const app = express();
