@@ -8,26 +8,23 @@ app.set('view engine','ejs');
 
 app.use(express.static(path.join(__dirname,'public')));
 
-const accountData = fs.readFileSync(path.join(__dirname,'json','accounts.json'),'utf8',(err, data) =>{
-});
+const accountData = fs.readFileSync(path.join(__dirname,'json','accounts.json'),'utf8');
 const accounts = JSON.parse(accountData);
 
-const userData= fs.readFileSync(path.join(__dirname,'json','users.json'),'utf8', (err,res) =>{
-});
+const userData= fs.readFileSync(path.join(__dirname,'json','users.json'),'utf8');
 
 const users =JSON.parse(userData);
 
 app.get('/savings', (req,res) =>{
-  console.log("Savings account called");
-  app.render('account', {account:accounts.savings});
+  res.render('account', {account:accounts.savings});
 });
 
 app.get('/checking', (req,res) =>{
-  app.render('account', {account:accounts.checking});
+  res.render('account', {account:accounts.checking});
 });
 
 app.get('/credit', (req,res) =>{
-  app.render('account', {account:accounts.credit});
+  res.render('account', {account:accounts.credit});
 });
 
 app.get('/profile', (req,res) =>{
@@ -35,7 +32,7 @@ app.get('/profile', (req,res) =>{
 });
 
 app.get('/', (req,res) =>{
-  res.render('index',{title:"Account Summary", accounts:accounts});
+  res.render('index',{title:"Account Summary", accounts});
 });
 
 app.listen(3000, ()=>{
