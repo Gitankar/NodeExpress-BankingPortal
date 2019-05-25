@@ -18,6 +18,7 @@ const userData= fs.readFileSync(path.join(__dirname,'json','users.json'),'utf8',
 const users =JSON.parse(userData);
 
 app.get('/savings', (req,res) =>{
+  console.log("Savings account called");
   app.render('account', {account:accounts.savings});
 });
 
@@ -34,9 +35,7 @@ app.get('/profile', (req,res) =>{
 });
 
 app.get('/', (req,res) =>{
-
-  res.render('index',{title:'Account Summary', accounts:accounts});
-
+  res.render('index',{title:"Account Summary", accounts:accounts});
 });
 
 app.listen(3000, ()=>{
