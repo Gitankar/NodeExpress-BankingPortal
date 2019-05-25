@@ -1,42 +1,32 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-
 const app = express();
-const accountData,accounts,userData,userss;
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
 app.use(express.static(path.join(__dirname,'public')));
 
-app.readFileSync(path.join(__dirname,'json',accounts.json'),'utf8',(err, data) =>{
-  if(err){
-    return condolr.log("Error occured while reading file");
-  }
-  accountData = data;
-  accounts = JSON.parse(accountData);
+const accountData = fs.readFileSync(path.join(__dirname,'json','accounts.json'),'utf8',(err, data) =>{
+});
+const accounts = JSON.parse(accountData);
+
+const userData= fs.readFileSync(path.join(__dirname,'json','users.json'),'utf8', (err,res) =>{
 });
 
-app.readFileSync(path.join(__dirname,'json','users.json'), 'utf8', (err,res) =>{
-
-  if(err){
-    return console.log("Error while reading data from Users Json");
-  }
-  userData = data;
-  users = JSON.parse(userData);
-});
+const users =JSON.parse(userData);
 
 app.get('/savings', (req,res) =>{
-  app.render('account', {accounts.savings});
+  app.render('account', {account:accounts.savings});
 });
 
 app.get('/checking', (req,res) =>{
-  app.render('account', {accounts.checking});
+  app.render('account', {account:accounts.checking});
 });
 
 app.get('/credit', (req,res) =>{
-  app.render('account', {accounts.credit});
+  app.render('account', {account:accounts.credit});
 });
 
 app.get('/profile', (req,res) =>{
